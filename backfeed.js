@@ -17,6 +17,9 @@ var Backfeed = (function() {
   
   //Add an event listener to a single form input
   var _registerListener = function(eventName, element, status, group) {
+    element = document.getElementById(element);
+    status = document.getElementById(status);
+    group = document.getElementById(group);
     element.addEventListener(eventName, function invoke(event) {
       _updateStatus(event, status, group);
     }, false);
