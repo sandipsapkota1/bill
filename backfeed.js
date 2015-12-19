@@ -10,10 +10,7 @@ var Backfeed = (function() {
   //attach change listeners to each input
   var watchInputs = function(inputList) {
     for (let formInput in inputList) {
-      console.log(inputList[formInput]);
       var currInput = inputList[formInput];
-      var inputStatus = currInput['status'];
-      var inputGroup = currInput['group'];
       _registerListener('keyup', currInput['input'], currInput['status'], currInput['group']);
     }
   };
@@ -61,6 +58,6 @@ var Backfeed = (function() {
   };
   
   return {
-    watch: watchInputs,
+    watch: watchInputs
   }
 })();
