@@ -13,7 +13,7 @@ var Backfeed = (function() {
   var watchInputs = function(inputList) {
     for (let formInput in inputList) {
       var currInput = inputList[formInput];
-      _registerListener('keyup', currInput['input'], currInput['status']);
+      _registerListener('keyup', currInput['input']);
     }
   };
 
@@ -41,7 +41,7 @@ var Backfeed = (function() {
   };
   
   //Add an event listener to a single form input
-  var _registerListener = function(eventName, element, status) {
+  var _registerListener = function(eventName, element) {
     element = document.getElementById(element);
     var status = _getSiblingFormControlFeedback(element);
     var group = _getParentFormGroup(element);
