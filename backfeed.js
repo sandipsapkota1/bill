@@ -11,7 +11,7 @@ var Backfeed = (function() {
   const baseStatusClass = 'glyphicon';
   const baseFeedbackClass = 'has-feedback';
 
-  //attach change listeners to each input
+  //attach change listeners to each input in array
   var watchInputs = function(inputList) {
     for (var i = 0; i < inputList.length; i++) {
       var currInput = document.getElementById(inputList[i]);
