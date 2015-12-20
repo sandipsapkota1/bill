@@ -9,6 +9,7 @@ var Backfeed = (function() {
   const formGroupClass = 'form-group';
   const formControlFeedbackClass = 'form-control-feedback';
   const baseStatusClass = 'glyphicon';
+  const baseFeedbackClass = 'has-feedback';
 
   //attach change listeners to each input
   var watchInputs = function(inputList) {
@@ -22,6 +23,14 @@ var Backfeed = (function() {
   var _getParentFormGroup = function(element) {
     while (! element.parentNode.classList.contains(formGroupClass)) {
       element = element.parentNode;
+    }
+    var group = element.parentNode;
+    if (! group.classList.contains(formGroupClass)) {
+      return null; //there is no parent form-group
+    }
+    //ensure that the form-group has the has-feedback class
+    if (! group.classList.contains(baseFeedbackClass)) {
+      group.classList.add(baseFeedbackClass);
     }
     return element.parentNode;
   };
