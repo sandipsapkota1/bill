@@ -2,3 +2,6 @@
 /html
 /fonts
 /css
+/.babelrc
+/node_modules
+backfeed-compiled*
