@@ -14,8 +14,17 @@ var Backfeed = (function() {
   //attach change listeners to each input
   var watchInputs = function(inputList) {
     for (let formInput in inputList) {
-      var currInput = inputList[formInput];
-      _registerListener('keyup', currInput['input']);
+      var currInput = document.getElementById(inputList[formInput]);
+      _registerListener('keyup', currInput);
+    }
+  };
+
+  //Watch all of the inputs within a form
+  var watchForm = function(formId) {
+    var form = document.getElementById(formId);
+    var inputs = form.querySelectorAll('input');
+    for (var i = 0; i < inputs.length; i++) {
+      _registerListener('keyup', inputs[i]);
     }
   };
 
@@ -58,7 +67,6 @@ var Backfeed = (function() {
   
   //Add an event listener to a single form input
   var _registerListener = function(eventName, element) {
-    element = document.getElementById(element);
     var status = _getSiblingFormControlFeedback(element);
     var group = _getParentFormGroup(element);
     element.addEventListener(eventName, function invoke(event) {
@@ -102,6 +110,7 @@ var Backfeed = (function() {
   };
   
   return {
-    watch: watchInputs
+    watchInputs: watchInputs,
+    watchForm: watchForm
   }
 })();
