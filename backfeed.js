@@ -8,6 +8,7 @@ var Backfeed = (function() {
   const successGroupClass = 'has-success';
   const formGroupClass = 'form-group';
   const formControlFeedbackClass = 'form-control-feedback';
+  const baseStatusClass = 'glyphicon';
 
   //attach change listeners to each input
   var watchInputs = function(inputList) {
@@ -32,12 +33,18 @@ var Backfeed = (function() {
     for (var i = 0; i < siblingsInclusive.length; i ++) {
       sibling = siblingsInclusive[i];
       if (sibling !== element) {
+        //if there is a proper sibling, return it
         if (sibling.classList.contains(formControlFeedbackClass)) {
           return sibling;
         }
       }
     }
-    return null;
+    //if no sibling was found, create one and return it.
+    var status = document.createElement('span');
+    status.classList.add(baseStatusClass);
+    status.classList.add(formControlFeedbackClass)
+    element.parentNode.appendChild(status);
+    return status;
   };
   
   //Add an event listener to a single form input
