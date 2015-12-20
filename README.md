@@ -20,7 +20,7 @@ When the page is ready, invoke backfeed like so:
             </div>
         </div>
     </div>
-    <script src="../backfeed.js"></script>
+    <script src="/path/to/backfeed.js"></script>
     <script>
         function ready(fn) {
             if (document.readyState != 'loading') {
