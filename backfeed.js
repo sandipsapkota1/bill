@@ -6,20 +6,45 @@ var Backfeed = (function() {
   const errorGroupClass = 'has-error';
   const successStatusClass = 'glyphicon-ok';
   const successGroupClass = 'has-success';
+  const formGroupClass = 'form-group';
+  const formControlFeedbackClass = 'form-control-feedback';
 
   //attach change listeners to each input
   var watchInputs = function(inputList) {
     for (let formInput in inputList) {
       var currInput = inputList[formInput];
-      _registerListener('keyup', currInput['input'], currInput['status'], currInput['group']);
+      _registerListener('keyup', currInput['input'], currInput['status']);
     }
+  };
+
+  //Traverse upward through the DOM to the nearest form group
+  var _getParentFormGroup = function(element) {
+    while (! element.parentNode.classList.contains(formGroupClass)) {
+      element = element.parentNode;
+    }
+    return element.parentNode;
+  };
+
+  //Traverse input siblings to find sibling form-control-feedback
+  var _getSiblingFormControlFeedback = function(element) {
+    var siblingsInclusive = element.parentNode.children;
+    var sibling;
+    for (var i = 0; i < siblingsInclusive.length; i ++) {
+      sibling = siblingsInclusive[i];
+      if (sibling !== element) {
+        if (sibling.classList.contains(formControlFeedbackClass)) {
+          return sibling;
+        }
+      }
+    }
+    return null;
   };
   
   //Add an event listener to a single form input
-  var _registerListener = function(eventName, element, status, group) {
+  var _registerListener = function(eventName, element, status) {
     element = document.getElementById(element);
-    status = document.getElementById(status);
-    group = document.getElementById(group);
+    var status = _getSiblingFormControlFeedback(element);
+    var group = _getParentFormGroup(element);
     element.addEventListener(eventName, function invoke(event) {
       _updateStatus(event, status, group);
     }, false);
