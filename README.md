@@ -23,14 +23,11 @@ When the page is ready, invoke backfeed like so:
   </div>
 </div>
 <script>
-  var $usernameInput = document.getElementById('usernameInput');
-  var $usernameInputStatus = document.getElementById('usernameInputStatus');
-  var $usernameInputGroup = document.getElementById('usernameInputGroup');
   Backfeed.watch({
     username: {
-      'input': $usernameInput,
-      'status': $usernameInputStatus,
-      'group': $usernameInputGroup
+      'input': 'usernameInput',
+      'status': 'usernameInputStatus',
+      'group': 'usernameInputGroup'
     }
     //additional inputs of the same form go here
   });
