@@ -13,8 +13,8 @@ var Backfeed = (function() {
 
   //attach change listeners to each input
   var watchInputs = function(inputList) {
-    for (let formInput in inputList) {
-      var currInput = document.getElementById(inputList[formInput]);
+    for (var i = 0; i < inputList.length; i++) {
+      var currInput = document.getElementById(inputList[i]);
       _registerListener('keyup', currInput);
     }
   };
