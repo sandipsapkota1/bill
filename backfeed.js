@@ -24,7 +24,8 @@ var Backfeed = (function() {
     var form = document.getElementById(formId);
     var inputs = form.querySelectorAll('input');
     for (var i = 0; i < inputs.length; i++) {
-      _registerListener('keyup', inputs[i]);
+      //_registerListener('keyup', inputs[i]);
+      _registerListener('input', inputs[i]);
     }
   };
 
@@ -67,6 +68,16 @@ var Backfeed = (function() {
   
   //Add an event listener to a single form input
   var _registerListener = function(eventName, element) {
+    var type = element.getAttribute('type');
+    switch(type) {//don't add listeners to these types
+      case 'submit':
+      case 'button':
+      case 'hidden':
+      case 'reset':
+      case 'radio':
+      case 'checkbox':
+            return;
+    }
     var status = _getSiblingFormControlFeedback(element);
     var group = _getParentFormGroup(element);
     element.addEventListener(eventName, function invoke(event) {
