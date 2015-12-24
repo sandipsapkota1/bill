@@ -1,5 +1,7 @@
 # backfeed
-Simple Bootstrap 3 form validation without JQuery
+Simple Bootstrap 3 form validation without JQuery.
+
+Backfeed uses the HTMLFormInput API's knowledge of itself to apply styling to valid HTML inputs in a form. It makes no attempt to enforce rules, and will not catch any violation of format that the browser's implementation of HTML input validation would not catch.
 
 ##Prerequisites
 
@@ -14,6 +16,14 @@ When the page is ready, call Backfeed on your form inputs in one of two ways:
 
 - Backfeed.watchInputs() accepts an array of input ids.
 - Backfeed.watchForm() accepts the id of the parent element of many inputs and activates form feedback on all of them.
+
+**Backfeed ignores inputs with the following types:**
+- **submit**
+- **button**
+- **hidden**
+- **reset**
+- **radio**
+- **checkbox**
 
 ```html
 <body>
