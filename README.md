@@ -1,23 +1,25 @@
-# backfeed
+# bill
 Simple Bootstrap 3 form validation without JQuery.
 
-Backfeed uses the HTMLFormInput API's knowledge of itself to apply styling to valid HTML inputs in a form. It makes no attempt to enforce rules, and will not catch any violation of format that the browser's implementation of HTML input validation would not catch.
+Bill uses the HTMLFormInput API's knowledge of itself to apply styling to valid HTML inputs in a form. It makes no attempt to enforce rules, and will not catch any violation of format that the browser's implementation of HTML input validation would not catch.
+
+The name comes from Bootstrap Bill Turner in Pirates of the Carribean.
 
 ##Prerequisites
 
-- Backfeed assumes that you're using the Bootstrap 3 CSS framework.
+- Bill assumes that you're using the Bootstrap 3 CSS framework.
 - Each input validated must be in its own form-group.
 - The input must have a unique id (if invoking watchInputs).
 - The form must have a unique id (if invoking watchForm).
 
 ##Usage
 
-When the page is ready, call Backfeed on your form inputs in one of two ways:
+When the page is ready, call Bill on your form inputs in one of two ways:
 
-- Backfeed.watchInputs() accepts an array of input ids.
-- Backfeed.watchForm() accepts the id of the parent element of many inputs and activates form feedback on all of them.
+- Bill.watchInputs() accepts an array of input ids.
+- Bill.watchForm() accepts the id of the parent element of many inputs and activates form feedback on all of them.
 
-**Backfeed ignores inputs with the following types:**
+**Bill ignores inputs with the following types:**
 - **submit**
 - **button**
 - **hidden**
@@ -45,7 +47,7 @@ When the page is ready, call Backfeed on your form inputs in one of two ways:
             </div>
         </div>
     </div>
-    <script src="/path/to/backfeed.js"></script>
+    <script src="/path/to/bill.js"></script>
     <script>
         function ready(fn) {
             if (document.readyState != 'loading') {
@@ -57,10 +59,10 @@ When the page is ready, call Backfeed on your form inputs in one of two ways:
 
         ready(function go() {
             //invoke with array of ids, each corresponding to an input
-            Backfeed.watchInputs(['usernameInput', 'emailInput']);
+            Bill.watchInputs(['usernameInput', 'emailInput']);
             
             //invoke with id of a form
-            Backfeed.watchForm('test-form2');
+            Bill.watchForm('test-form2');
         });
     </script>
 </body>
