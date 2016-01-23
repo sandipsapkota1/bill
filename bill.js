@@ -1,5 +1,5 @@
-/* backfeed.js */
-var Backfeed = (function() {
+/* bill.js */
+var Bill = (function() {
   "use strict";
   //define classes to add/remove
   const errorStatusClass = 'glyphicon-remove';
